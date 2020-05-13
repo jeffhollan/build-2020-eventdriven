@@ -1,0 +1,7 @@
+POST http://localhost:7071/api/Update_Marketing
+Content-Type: application/json
+
+{
+    "username": "jeffhollan",
+    "location": "Seattle"
+}
