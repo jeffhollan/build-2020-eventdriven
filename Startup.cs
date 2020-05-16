@@ -9,7 +9,7 @@ namespace Hollan.Function
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.Services.AddSingleton<IMarketingClient, MarketingClient>();
+            builder.Services.AddSingleton<IEventClient, EventClient>();
         }
     }
 }

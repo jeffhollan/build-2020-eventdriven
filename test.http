@@ -1,4 +1,4 @@
-POST http://localhost:7071/api/Update_Marketing
+POST http://localhost:7071/api/Process_Event
 Content-Type: application/json
 
 {

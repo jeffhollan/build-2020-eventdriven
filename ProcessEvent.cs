@@ -10,15 +10,15 @@ using Newtonsoft.Json;
 
 namespace Hollan.Function
 {
-    public class Update_Marketing
+    public class ProcessEvent
     {
-        private readonly IMarketingClient _marketingClient;
-        public Update_Marketing(IMarketingClient marketingClient)
+        private readonly IEventClient _eventClient;
+        public ProcessEvent(IEventClient eventClient)
         {
-            _marketingClient = marketingClient;
+            _eventClient = eventClient;
         }
 
-        [FunctionName("Update_Marketing")]
+        [FunctionName("Process_Event")]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
@@ -27,7 +27,7 @@ namespace Hollan.Function
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             
-            var responseMessage = await _marketingClient.AddNewLeadAsync(requestBody);
+            var responseMessage = await _eventClient.ProcessEvent(requestBody);
 
             return new OkObjectResult(responseMessage);
         }
